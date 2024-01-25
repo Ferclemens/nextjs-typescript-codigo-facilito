@@ -6,7 +6,30 @@
   padding: 6rem;
   min-height: 100vh;
 }
-
+/*-------------------------------------------------------------------------*/
+.title {
+  margin: 1rem 2rem;
+  font-size: 2.5rem;
+}
+.card {
+  margin: 1rem;
+  background-color: grey;
+}
+.description{
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: light !important;
+  margin: 1rem;
+}
+.description h4 {
+  padding: 0.2rem 0;
+}
+.address {
+  margin: 1rem;
+}
+.address h4 {
+  padding: 0.2rem 0;
+}
+/*-------------------------------------------------------------------------*/
 .description {
   display: inherit;
   justify-content: inherit;
