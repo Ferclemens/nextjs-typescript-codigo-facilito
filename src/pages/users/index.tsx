@@ -1,12 +1,29 @@
 import styles from "../../styles/Home.module.css";
 
+type UserData = {
+    name: string,
+    id : string,
+    email : string,
+    website : string,
+    company : {
+        name : string,
+        bs : string
+    },
+    address : {
+        street : string,
+        city : string,
+        suite : string
+    },
+    phone : string
+}
+
 export default function Users({data}: any){
-    console.log(data)
+    //console.log(data)
     return (
         <section>
             <h1 className={styles.title}>Users</h1>
             <div>
-                {data.map((user: any) => {
+                {data.map((user: UserData) => {
                     const { name, id, email, website, company, address, phone } = user
                     return (
                         <div key={id} className={styles.card}>
@@ -37,7 +54,7 @@ export async function getStaticProps(){
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users')
         const data = await response.json()
-        console.log('DATA', data)
+        //console.log('DATA', data)
         return {
             props : {data}
         }
