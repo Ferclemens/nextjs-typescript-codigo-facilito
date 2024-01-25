@@ -22,6 +22,7 @@ export default function Users({data}: any){
     return (
         <section>
             <h1 className={styles.title}>Users</h1>
+            <a className={styles.link} href="https://jsonplaceholder.typicode.com/users" target="_blank">font: Json Place Holder</a>
             <div>
                 {data.map((user: UserData) => {
                     const { name, id, email, website, company, address, phone } = user
