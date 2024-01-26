@@ -1,45 +1,48 @@
 import styles from "../../styles/Home.module.css";
 
 type UserData = {
-    name: string,
-    id : string,
-    email : string,
-    website : string,
-    company : {
-        name : string,
-        bs : string
+    name? : string,
+    id? : string,
+    email? : string,
+    website? : string,
+    company? : {
+        name? : string,
+        bs? : string
     },
-    address : {
-        street : string,
-        city : string,
-        suite : string
+    address? : {
+        street? : string,
+        city? : string,
+        suite? : string
     },
-    phone : string
+    phone? : string
 }
 
-export default function Users({data}: any){
-    //console.log(data)
+type UserDataProps = {
+    usersArray : UserData[]
+}
+
+export default function Users({usersArray}: UserDataProps ){
+    console.log(usersArray)
     return (
         <section>
             <h1 className={styles.title}>Users</h1>
             <a className={styles.link} href="https://jsonplaceholder.typicode.com/users" target="_blank">font: Json Place Holder</a>
             <div>
-                {data.map((user: UserData) => {
-                    const { name, id, email, website, company, address, phone } = user
+                {usersArray?.map((user: UserData) => {
                     return (
-                        <div key={id} className={styles.card}>
+                        <div key={user.id} className={styles.card}>
                             
-                            <h2>{`${id} - ${name}`}</h2>
+                            <h2>{`${user.id} - ${user.name}`}</h2>
                             <div className={styles.description}>
-                                <h4>Website: {website}</h4>
-                                <h4>Company: {company.name}</h4>
-                                <h4>Business: {company.bs}</h4>
-                                <h4>Email: {email}</h4>
-                                <h4>Phone: {phone}</h4>
+                                <h4>Website: {user.website}</h4>
+                                <h4>Company: {user.company?.name}</h4>
+                                <h4>Business: {user.company?.bs}</h4>
+                                <h4>Email: {user.email}</h4>
+                                <h4>Phone: {user.phone}</h4>
                             </div>
                             <div className={styles.address}>
-                                <h4>Address: {`${address.street} - ${address.suite}`}</h4>
-                                <h4>City: {address.city}</h4>
+                                <h4>Address: {`${user.address?.street} - ${user.address?.suite}`}</h4>
+                                <h4>City: {user.address?.city}</h4>
                             </div>
 
                         </div>
@@ -60,9 +63,7 @@ export async function getStaticProps(){
             props : {data}
         }
     } catch (error) {
-        return {
-            message : {error}
-        }
+        return console.log(error)
     }
 }
 
