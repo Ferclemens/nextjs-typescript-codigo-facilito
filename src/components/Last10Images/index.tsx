@@ -1,10 +1,12 @@
 import { Image } from "@/types"
+import { useRouter } from "next/router"
 
 type Last10ImagesProps = {
     images : Image[]
 }
 
 const Last10Images = ({ images }: Last10ImagesProps) => {
+    const router = useRouter()
     //console.log('images array', images)
     return (
         <div>
@@ -12,7 +14,7 @@ const Last10Images = ({ images }: Last10ImagesProps) => {
                 images?.map((image, index) => {
                     return  (
                         <div key={`last10Days-Key-${index}`}>
-                            <img src={image.url} alt={image.title}/>
+                            <img src={image.url} alt={image.title} onClick={() => router.push(`/image/${image.date}`)}/>
                             <h3>{image.title}</h3> 
                         </div>
                     )
